@@ -6,7 +6,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class AuthService
 {
-  domain = "http://localhost:3000";
+  domain = "https://cryptojsbackend.herokuapp.com";
   authToken;
   user;
   options;
@@ -37,7 +37,7 @@ export class AuthService
   {
     return this.http.get('https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,ADA,ADX,AE,AION,AMB,APPC,ARK,ARN,ERC20,AST,BAT,BCC,BCD,BCPT,BLZ,BNB,BNT,BQX,ETH,XRP,XLM,IOT&tsyms=BTC,USD,EUR').map(result => this.result = result.json());
   }
-  
+
   registerUser(user)
   {
     return this.http.post(this.domain + '/register', user).map(res => res.json());
