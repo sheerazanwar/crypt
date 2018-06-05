@@ -6,7 +6,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class AuthService
 {
-  domain = "https://cryptojsbackend.herokuapp.com/";
+  domain = "";
   authToken;
   user;
   options;
