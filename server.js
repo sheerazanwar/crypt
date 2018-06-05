@@ -32,7 +32,7 @@ app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static(__dirname + '/public'));
-//app.use(cors({origin: 'http://localhost:4200'}));
+app.use(cors({origin: 'http://localhost:4200'}));
 
 if (process.env.NODE_ENV !== 'production')
 {
