@@ -1,0 +1,61 @@
+<app-navbar></app-navbar>
+<div class="fluid-container col-sm-12" style="background:#e8e5e5;height:700px;">
+  <div class="col-sm-offset-3 col-sm-6" style="margin-top:40px;">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title">Profile</h3>
+      </div>
+      <div class="panel-body">
+        <!-- Custom Success/Error Message -->
+        <div class="row show-hide-message">
+          <div [ngClass]="messageClass">
+            {{ message }}
+          </div>
+        </div>
+        <ul class="list-group">
+          <li class="list-group-item">
+            <font style="font-size:18px; font-style:bold;">  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Username </font> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font style="font-size:17px"> {{ username }}</font>
+          </li>
+          <li class="list-group-item">
+            <font style="font-size:18px; font-style:bold;">  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Email </font> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font style="font-size:17px">{{ email }} </font>
+          </li>
+          <li class="list-group-item">
+            <font style="font-size:18px; font-style:bold;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Phone No </font> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font style="font-size:17px">{{ phone }} </font>
+          </li>
+          <li class="list-group-item">
+            <font style="font-size:18px; font-style:bold;">  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Country </font> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font style="font-size:17px">{{ country }} </font>
+          </li>
+          <form [formGroup]="form" (submit)="onSubmit()">
+            <li *ngIf="change" class="list-group-item">
+              <div class="input-group col-sm-10">
+                <span class="input-group-addon" id="basic-addon1" style="width:30%;">New Password</span>
+                <div [ngClass]="{'has-error': (form.controls.password.errors && form.controls.password.dirty), 'has-success': !form.controls.password.errors}">
+                    <input type="password" name="password" class="form-control" autocomplete="off" placeholder="*New Password" formControlName="password" aria-describedby="basic-addon1" />
+                </div>
+              </div>
+              <ul class="help-block col-sm-offset-3 col-sm-9">
+                <li *ngIf="form.controls.password.errors?.required && form.controls.password.dirty">This field is required</li>
+                <li *ngIf="form.controls.password.errors?.minlength && form.controls.password.dirty || form.controls.password.errors?.maxlength && form.controls.password.dirty ">Minimum characters 8 & Maximum characters 35</li>
+                <li *ngIf="form.controls.password.errors?.validatePassword && form.controls.password.dirty">Must have Uppercase, Lowercase and Number</li>
+              </ul>
+            </li>
+            <li *ngIf="change" class="list-group-item ">
+              <div class="input-group col-sm-10">
+                <span class="input-group-addon" id="basic-addon1" style="width:30%;">Confirm Password</span>
+                <div [ngClass]="{'has-error': (form.controls.confirm.errors && form.controls.confirm.dirty) || (form.errors?.matchingPasswords && form.controls.confirm.dirty), 'has-success': !form.controls.confirm.errors && !form.errors?.matchingPasswords}">
+                  <input type="password" name="confirm" class="form-control" autocomplete="off" placeholder="*Confirm Password" formControlName="confirm" aria-describedby="basic-addon1" />
+                </div>
+              </div>
+              <ul class="help-block col-sm-offset-3 col-sm-9">
+                <li *ngIf="form.controls.confirm.errors?.required && form.controls.confirm.dirty">This field is required</li>
+                <li *ngIf="form.errors?.matchingPasswords && form.controls.confirm.dirty">Password do not match</li>
+              </ul>
+            </li>
+          <input [disabled]="!form.valid" *ngIf="change" type="submit" class="btn btn-success col-sm-offset-8 col-sm-4" value="Save Password" />
+          <button *ngIf="!change" class="btn btn-primary col-sm-offset-8 col-sm-4" (click)="changes()">Change Password</button>
+        </form>
+      </ul>
+      </div>
+    </div>
+  </div>
+</div>

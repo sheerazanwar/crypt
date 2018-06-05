@@ -1,0 +1,117 @@
+<app-navbar></app-navbar>
+<div class="fluid-container col-sm-12" style="background:#e8e5e5;">
+  <div class="col-sm-12" style="background:white;">
+    <br>
+    <table class="table table-hover">
+      <tr>
+        <td class="col-sm-1">
+        </td>
+        <td class="col-sm-2">
+          &nbsp;&nbsp;&nbsp;Estimated Value
+          <br>
+          <strong style="font-size:20px;"> {{btc+open}} </strong> BTC
+          <br>
+          &nbsp;&nbsp;&nbsp;~<strong style="font-size:18px;"> 175.06 </strong> $
+        </td>
+        <td class="col-sm-2">
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Available
+          <br>
+          <strong style="font-size:20px;color:#12bc12;"> {{btc}} </strong> BTC
+          <br>
+          &nbsp;&nbsp;&nbsp;~<strong style="font-size:18px;"> 175.06 </strong> $
+        </td>
+        <td class="col-sm-2">
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In Order
+          <br>
+          <strong style="font-size:20px;color:#ff613a;"> {{open}} </strong> BTC
+          <br>
+          &nbsp;&nbsp;&nbsp;~<strong style="font-size:18px;"> 175.06 </strong> $
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div class="col-sm-offset-1 col-sm-10" style="margin-top:20px;background:#e8e5e5;height:700px;">
+    <div class="list-group col-sm-2">
+      <a routerLink="/overview" class="list-group-item list-group-item-action ">Overview</a>
+      <a routerLink="/deposit" class="list-group-item list-group-item-action ">Deposit</a>
+      <a routerLink="/withdrawal" class="list-group-item list-group-item-action active">Withdrawal</a>
+      <a routerLink="/openorders" class="list-group-item list-group-item-action ">Open Orders</a>
+      <a routerLink="/tradehistory" class="list-group-item list-group-item-action">Trade History</a>
+    </div>
+    <div class="col-sm-10" style="background:#e8e5e5;">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title">Withdraw</h3>
+        </div>
+        <div class="panel-body">
+          <div class="col-sm-4">
+            <select class="form-control" (change)="withdraw(values[$event.target.selectedIndex])">
+              <option [value]="v" *ngFor="let v of values" >
+                &nbsp;&nbsp;{{v.name}}&nbsp;&nbsp;<em style="color:#919499;font-size:12px;">{{v.symbol}}</em>
+              </option>
+            </select>
+          </div>
+          <div scope="col" class="offset-col-sm-2 col-sm-4" style="position:relative;margin-left: 10%;top:7px;left:20px;">Available {{coin}} <span style="color:#12bc12">{{avail}}</span></div>
+          <!-- <div scope="col" class="col-sm-4" style="position:relative;top:7px;">In Order {{coin}} <span style="color:#ff613a">4</span></div> -->
+          <br><br>
+          <div class="col-sm-4" style="margin-left:35%;">
+            <br><br><br>
+            <form [formGroup]="form" (submit)="onSubmit()">
+              <div class="form-group">
+                <label for="Address"><font style="color:red;">*</font> Address :</label>
+                <div [ngClass]="{'has-error': (form.controls.Address.errors && form.controls.Address.dirty), 'has-success': !form.controls.Address.errors}">
+                  <textarea type="text" class="form-control" name="Address" autocomplete="off" placeholder="* Address" formControlName="Address"  rows="2"></textarea>
+                  <ul class="help-block">
+                    <li *ngIf="form.controls.Address.errors?.required && form.controls.Address.dirty">This field is required</li>
+                    <li *ngIf="form.controls.Address.errors?.minlength && form.controls.Address.dirty">Min character: 15</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="Amount"><font style="color:red;">*</font> Amount</label>
+                <!-- <input type="text" class="form-control" id="Ammount" placeholder=""> -->
+                <div [ngClass]="{'has-error': (form.controls.Ammount.errors && form.controls.Ammount.dirty), 'has-success': !form.controls.Ammount.errors}">
+                  <input type="text" class="form-control" name="Ammount" autocomplete="off" placeholder="* Ammount" formControlName="Ammount">
+                  <ul class="help-block">
+                    <li *ngIf="form.controls.Ammount.errors?.required && form.controls.Ammount.dirty">This field is required</li>
+                    <li *ngIf="form.controls.Ammount.errors?.minlength && form.controls.Ammount.dirty">Min Character: 2</li>
+                    <li *ngIf="form.controls.Ammount.errors?.maxlength && form.controls.Ammount.dirty">Max Character: 15</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="form-group" *ngIf="tagshow">
+                <label for="TagAddress"><font style="color:red;">*</font> TagAddress</label>
+                <div [ngClass]="{'has-error': (form.controls.TagAddress.errors && form.controls.TagAddress.dirty), 'has-success': !form.controls.TagAddress.errors}">
+                  <input type="text" class="form-control" name="TagAddress" autocomplete="off" placeholder="* TagAddress" formControlName="TagAddress">
+                  <ul class="help-block">
+                    <li *ngIf="form.controls.TagAddress.errors?.required && form.controls.TagAddress.dirty">This field is required</li>
+                    <li *ngIf="form.controls.TagAddress.errors?.minlength && form.controls.TagAddress.dirty">Min Character: 2</li>
+                    <li *ngIf="form.controls.TagAddress.errors?.maxlength && form.controls.TagAddress.dirty">Max Character: 15</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="form-check form-check-inline"  style="text-align: center;">
+                <input class="form-check-input" type="checkbox" id="Tagshow" value="Tagshow" formControlName="Tagshow" (click)="Tag()">
+                <label class="form-check-label" for="Tagshow">Address Tag</label>
+              </div>
+              <div class="form-group">
+                <strong>Fee :</strong> 0.5
+              </div>
+              <div class="form-group">
+                  <input  [disabled]="!form.valid" type="submit" class="btn btn-primary col-sm-12" value="Submit"/>
+              </div>
+            </form>
+            <br><br><br>
+          </div>
+        </div>
+        <div class="panel-footer">
+          <strong>Tips:</strong>
+          <ul>
+            <li>The transfer of digital assets between the accounts of the WOLOWZ platform is not supported, please ensure that your transfer address is non WOLOWZ account address.</li>
+            <li>We will process your withdrawal in 30 minutes, it depends on the blockchain when the assets would finally transfered to your wallet.</li>
+          </ul>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>

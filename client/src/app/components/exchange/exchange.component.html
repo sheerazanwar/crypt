@@ -1,0 +1,272 @@
+<app-navbar></app-navbar>
+
+<div class="device-width">
+
+  <div class="container pull-left divv_box" style="background:white;width:80%; height:100px;">
+        <app-loading-spinner *ngIf="showSpinner" style="position:absolute;left:35%;top:10%;"></app-loading-spinner>
+    <table class="table table1">
+      <tr>
+        <th class="col-sm-2">
+          Name
+        </th>
+        <th class="col-sm-2">
+          Price
+        </th>
+        <th class="col-sm-2">
+          24h Change
+        </th>
+        <th class="col-sm-2">
+          24h High
+        </th>
+        <th class="col-sm-2">
+          24h Low
+        </th>
+        <th class="col-sm-3">
+          24 Volume
+        </th>
+      </tr>
+      <tr>
+        <td *ngIf="name">
+          {{coinz}}
+        </td>
+        <td [ngStyle]="{'color': pricecolor}">
+          {{price.close}}
+        </td>
+        <td>
+          {{price.change}}
+        </td>
+        <td>
+          {{price.high}}
+        </td>
+        <td>
+          {{price.low}}
+        </td>
+        <td *ngIf="name">
+          {{req}} BTC
+        </td>
+      </tr>
+    </table>
+  </div>
+                                                                          <!-- Rates -->
+
+  <div class="fluid-container pull-right scrollbar" id="style-7" style="background:#415a91; border-style: 6px solid red; width:20%; height:600px;  overflow:scroll;">
+    <app-rates></app-rates>
+  </div>
+                                                                          <!-- Chart -->
+
+  <div  class="container pull-left divv_box" style="background:#e8e5e5;width:80%; height:500px;">
+
+    <app-graph></app-graph>
+  </div>
+</div>
+                                                                      <!-- Buy / Sell -->
+
+  <div   class="container pull-left col-sm-12" style="background:#e8e5e5; height:350px;">
+
+    <flash-messages style="font-size:15px;color white;text-align:center;"></flash-messages>
+    <div   class="container col-sm-offset-2 div_box col-sm-3" style="position:relative;top:25px;background:white; height:300px;">
+      <h3>
+        Buy {{coinz}}
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em style="color:#919499;font-size:12px;align-content:right;">BTC Balance: {{bitcoin}}</em>
+      </h3>
+      <br>
+      <form [formGroup]="form" (submit)="onBuySubmit()">
+        <div class="input-group">
+          <span class="input-group-addon" id="basic-addon1" style="width:30%;">Price</span>
+          <div [ngClass]="{'has-error': (form.controls.Price.errors && form.controls.Price.dirty), 'has-success': !form.controls.Price.errors}">
+            <input type="number" class="form-control" name="Price" autocomplete="off" placeholder="* Price" formControlName="Price"  aria-describedby="basic-addon1" value="{{prize}}" [(ngModel)]="p1">
+          </div>
+        </div>
+        <br>
+        <div class="input-group">
+          <span class="input-group-addon" id="basic-addon1" style="width:30%;">Ammount</span>
+          <div [ngClass]="{'has-error': (form.controls.Ammount.errors && form.controls.Ammount.dirty), 'has-success': !form.controls.Ammount.errors}">
+            <input type="number" class="form-control" name="Ammount" autocomplete="off" placeholder="* Ammount" formControlName="Ammount"  aria-describedby="basic-addon1" [(ngModel)]="a1">
+          </div>
+        </div>
+        <br>
+        <div class="input-group">
+          <span class="input-group-addon" id="basic-addon1" style="width:30%;">Total</span>
+          <input type="number" class="form-control" name="Total" autocomplete="off" placeholder="* Total" formControlName="Total"  aria-describedby="basic-addon1" value={{a1*p1}} readonly>
+        </div>
+        <br>
+        <div class="form-group">
+          <input  [disabled]="!form.valid" type="submit" class="btn btn-success" value="Submit" style="position:absolute;left:10%;width:80%;" />
+        </div>
+      </form>
+    </div>
+    <div   class="container col-sm-offset-2 col-sm-3 div_box " style="position:relative;top:25px;background:white; height:300px;">
+      <h3>
+        Sell {{coinz}}
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em style="color:#919499;font-size:12px;align-content:right;">{{coinz}} Balance: {{altcoin}}</em>
+      </h3>
+      <br>
+      <form [formGroup]="form1" (submit)="onSellSubmit()">
+        <div class="input-group">
+          <span class="input-group-addon" id="basic-addon1" style="width:30%;">Price</span>
+          <div [ngClass]="{'has-error': (form1.controls.Price.errors && form1.controls.Price.dirty), 'has-success': !form1.controls.Price.errors}">
+            <input type="number" class="form-control" name="Price" autocomplete="off" placeholder="* Price" formControlName="Price"  aria-describedby="basic-addon1" value="{{prize}}" [(ngModel)]="p2">
+          </div>
+        </div>
+        <br>
+        <div class="input-group">
+          <span class="input-group-addon" id="basic-addon1" style="width:30%;">Ammount</span>
+          <div [ngClass]="{'has-error': (form1.controls.Ammount.errors && form1.controls.Ammount.dirty), 'has-success': !form1.controls.Ammount.errors}">
+            <input type="number" class="form-control" name="Ammount" autocomplete="off" placeholder="* Ammount" formControlName="Ammount"  aria-describedby="basic-addon1" [(ngModel)]="a2">
+          </div>
+        </div>
+        <br>
+        <div class="input-group">
+          <span class="input-group-addon" id="basic-addon1" style="width:30%;">Total</span>
+          <input type="number" class="form-control" name="Total" autocomplete="off" placeholder="* Total" formControlName="Total"  aria-describedby="basic-addon1" value={{p2*a2}} readonly>
+        </div>
+        <br>
+        <div class="form-group">
+          <input  [disabled]="!form1.valid" type="submit" class="btn btn-danger" value="Submit" style="position:absolute;left:10%;width:80%;" />
+        </div>
+      </form>
+    </div>
+  </div>
+                                                                          <!-- Bids / Asks -->
+
+  <div   class="container pull-left col-sm-12" style="background:#e8e5e5; height:550px;">
+    <div   class="container col-sm-offset-1  div_box col-sm-4" style="position:relative;top:25px;background:white; height:500px;">
+      <h3>
+        BIDS <em style="color:#919499;font-size:18px;">({{coinz}})</em>
+      </h3>
+      <br>
+      <table class="table table-striped table-hover">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Price</th>
+            <th scope="col">Amount</th>
+            <th scope="col">TOTAL</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let bid of bidsasks">
+            <td scope="row">{{bid.bidPrice}}</td>
+            <td>{{bid.bidQty}}</td>
+            <td>{{bid.bidQty*bid.bidPrice}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="container col-sm-offset-2 col-sm-4 div_box " style="position:relative;top:25px;background:white; height:500px;">
+      <h3>
+        ASKS <em style="color:#919499;font-size:18px;">({{coinz}})</em>
+      </h3>
+      <br>
+      <table class="table table-striped table-hover">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Price</th>
+            <th scope="col">Amount</th>
+            <th scope="col">TOTAL</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let ask of bidsasks">
+            <td scope="row">{{ask.askPrice}}</td>
+            <td>{{ask.askQty}}</td>
+            <td>{{ask.askQty * ask.askPrice}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+                                                                          <!-- Market History -->
+
+  <div   class="container pull-left col-sm-12" style="background:#e8e5e5; height:550px;">
+    <div   class="container col-sm-offset-1  div_box col-sm-10" style="position:relative;top:25px;background:white; height:500px;">
+      <h3>
+        Market History
+      </h3>
+      <br>
+      <table class="table table-striped table-hover">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col" class="col-sm-2">BUY/SELL</th>
+            <th scope="col" class="col-sm-2">TOTAL UNITS<em style="color:#6b6b6b;font-size:11px;">({{coinz}})</em></th>
+            <th scope="col" class="col-sm-2">Unit Price<em style="color:#6b6b6b;font-size:11px;">({{coinz}})</em></th>
+            <th scope="col" class="col-sm-2">TOTAL COST<em style="color:#6b6b6b;font-size:11px;">(BTC)</em></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let mark of market">
+            <td scope="row"><span *ngIf="mark.maker" style="color:red;">Sell</span><span *ngIf="!mark.maker" style="color:green;">Buy</span></td>
+            <td>{{mark.quantity}}</td>
+            <td>{{mark.price}}</td>
+            <td>{{mark.price*mark.quantity}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+                                                                          <!-- Open Order -->
+
+  <div   class="container pull-left col-sm-12" style="background:#e8e5e5; height:350px;">
+    <div   class="container col-sm-12 div_box " style="position:relative;top:25px;background:white; height:300px;">
+      <h3>
+        Open Order
+      </h3>
+      <!-- <span><button class="btn btn-danger" style="align:right" (click)="cancel()">Cancel Orders</button></span> -->
+      <br>
+      <table class="table table-striped table-hover">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col" class="col-sm-1">Coin</th>
+            <th scope="col" class="col-sm-1">Type</th>
+            <th scope="col" class="col-sm-2">Price</th>
+            <th scope="col" class="col-sm-2">Amount</th>
+            <th scope="col" class="col-sm-2">Total</th>
+            <th scope="col" class="col-sm-1">Status</th>
+            <th scope="col" class="col-sm-1"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let trade of unfilled">
+            <td scope="row">{{trade.status.symbol}}</td>
+            <td>{{trade.status.side}}</td>
+            <td>{{trade.status.price}}</td>
+            <td>{{trade.status.origQty}}</td>
+            <td>{{trade.status.price*trade.status.origQty}}</td>
+            <td>UNFILLED</td>
+            <td>
+                <button class="btn btn-danger" (click)="cancelone(trade.status.orderId,trade.status.symbol)"><span class="glyphicon glyphicon-trash"></span></button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+                                                                          <!-- Trade History -->
+  <div   class="container pull-left col-sm-12" style="background:#e8e5e5; margin-bottom: 25px;">
+    <div   class="container col-sm-12 div_box " style="position:relative;top:25px;background:white;">
+      <h3>
+        Trade History
+      </h3>
+      <br>
+      <table class="table table-striped table-hover">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col" class="col-sm-2">Coin</th>
+            <th scope="col" class="col-sm-2">Type</th>
+            <th scope="col" class="col-sm-2">Price</th>
+            <th scope="col" class="col-sm-2">Amount</th>
+            <th scope="col" class="col-sm-2">Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let trade of filled">
+            <td scope="row">{{trade.status.symbol}}</td>
+            <td>{{trade.status.side}}</td>
+            <td>{{trade.status.price}} &nbsp;<em style="color:#919499;font-size:12px;">BTC</em></td>
+            <td>{{trade.status.origQty}} &nbsp;<em style="color:#919499;font-size:12px;">{{trade.status.symbol}}</em></td>
+            <td>{{trade.status.origQty*trade.status.price}} &nbsp;<em style="color:#919499;font-size:12px;">BTC</em></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

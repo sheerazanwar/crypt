@@ -1,0 +1,45 @@
+<div id="back">
+  <div class="box">
+    <!-- Custom Success/Error Message -->
+    <div class="row show-hide-message">
+      <div [ngClass]="messageClass">
+        {{ message }}
+      </div>
+    </div>
+  <h2 class="asd" ><img src="../../../assets/pic/logo1.png" class="img-responsive" ></h2>
+  <br/>
+  <!-- Login Form -->
+  <form [formGroup]="form" (submit)="onLoginSubmit()">
+
+    <!-- Email Field -->
+    <div class="form-group row">
+      <div [ngClass]="{'has-error': form.controls.email.errors && form.controls.email.dirty, 'has-success': form.controls.email.valid && form.controls.email.dirty }">
+      <div class="col-sm-1"
+      ><span class="glyphicon glyphicon-envelope"  ></span></div>
+      <div class="col-sm-11"><input class="form-control" type="text" name="email" formControlName="email" /></div>
+        <!-- Validation -->
+        <ul class="help-block">
+          <li *ngIf="form.controls.email.errors?.required && form.controls.email.dirty">This field is required.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Password Field  -->
+    <div class="form-group row ">
+      <div [ngClass]="{'has-error': form.controls.password.errors && form.controls.password.dirty, 'has-success': form.controls.password.valid && form.controls.password.dirty }">
+      <div class="col-sm-1"><span class="glyphicon glyphicon-lock" style="position:relative;"></span></div>
+      <div class="col-sm-11"><input class="form-control" type="password" name="password" formControlName="password" /></div>
+        <!-- Validation -->
+        <ul class="help-block">
+           <li *ngIf="form.controls.password.errors?.required && form.controls.password.dirty">This field is required.</li>
+        </ul>
+      </div>
+    </div>
+    <!-- Submit Button -->
+    <br>
+    <input [disabled]="!form.valid || processing" class="btn btn-primary" type="submit" value="Login" /><br><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <font style="color:white">Not a member ? </font><a routerLink="/register">SignUp</a>
+  </form>
+</div>
+</div>

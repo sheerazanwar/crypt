@@ -1,0 +1,97 @@
+<app-navbar></app-navbar>
+<div class="fluid-container col-sm-12" style="background:#e8e5e5;">
+  <div class="col-sm-12" style="background:white;">
+    <br>
+    <table class="table table-hover">
+      <tr>
+        <td class="col-sm-1">
+        </td>
+        <td class="col-sm-2">
+          &nbsp;&nbsp;&nbsp;Estimated Value
+          <br>
+          <strong style="font-size:20px;"> {{btc+open}} </strong> BTC
+          <br>
+          &nbsp;&nbsp;&nbsp;~<strong style="font-size:18px;"> {{(btc+open)*bitcoin}} </strong> $
+        </td>
+        <td class="col-sm-2">
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Available
+          <br>
+          <strong style="font-size:20px;color:#12bc12;"> {{btc}} </strong> BTC
+          <br>
+          &nbsp;&nbsp;&nbsp;~<strong style="font-size:18px;"> 175.06 </strong> $
+        </td>
+        <td class="col-sm-2">
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In Order
+          <br>
+          <strong style="font-size:20px;color:#ff613a;"> {{open}} </strong> BTC
+          <br>
+          &nbsp;&nbsp;&nbsp;~<strong style="font-size:18px;"> 175.06 </strong> $
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div class="col-sm-offset-1 col-sm-10" style="margin-top:20px;background:#e8e5e5;height:750px;">
+    <div class="list-group col-sm-2">
+      <a routerLink="/overview" class="list-group-item list-group-item-action ">Overview</a>
+      <a routerLink="/deposit" class="list-group-item list-group-item-action active">Deposit</a>
+      <a routerLink="/withdrawal" class="list-group-item list-group-item-action ">Withdrawal</a>
+      <a routerLink="/openorders" class="list-group-item list-group-item-action ">Open Orders</a>
+      <a routerLink="/tradehistory" class="list-group-item list-group-item-action">Trade History</a>
+    </div>
+    <div class="col-sm-10" style="background:#e8e5e5;">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title">Deposit</h3>
+        </div>
+        <div class="panel-body" >
+        <app-loading-spinner *ngIf="showSpinner" style="position:absolute;left:55%;"></app-loading-spinner>
+          <div class="col-sm-4">
+            <select class="form-control" (change)="deposits(values[$event.target.selectedIndex])">
+              <option [value]="v" *ngFor="let v of values" >
+                &nbsp;&nbsp;{{v.name}}&nbsp;&nbsp;<em style="color:#919499;font-size:12px;">{{v.symbol}}</em>
+              </option>
+            </select>
+          </div>
+          <div scope="col" class="col-sm-4" style="position:relative;margin-left: 10%;top:7px;left:20px;">Available {{coin}} &nbsp;<span style="color:#12bc12;">{{avail}}</span></div>
+          <!-- <div scope="col" class="col-sm-4" style="position:relative;top:7px;">In Order {{coin}} <span style="color:#ff613a">4</span></div> -->
+          <div class="col-sm-12">
+            <br><br>
+            Your <font style="color:red;"> {{coin}}</font> Shares Deposit address：<strong style="font-size:12px;">{{address}}</strong><br>
+            <span *ngIf="tagshow">  AddressTag : <strong style="font-size:12px;">{{addressTag}}</strong></span><br>
+            <img src="../../../../assets/pic/qr.png" style="width:150px;height:150px;">
+          </div>
+          <br>
+          <form [formGroup]="form" (submit)="onSubmit()">
+
+            <div class="form-check form-check-inline"  style="text-align: center;">
+              <input class="form-check-input" type="checkbox" id="checkkk" value="checkkk" formControlName="checkkk" (click)="TransectionID()">
+              <label class="form-check-label" for="checkkk">Recive Coins</label>
+            </div>
+            <br><br>
+            <div class="form-group d-inline"  *ngIf="checks" style="margin-left:20%; width:60%;">
+              <label for="txid" style="margin-left:35%"><font style="color:red;">*</font> Transection ID </label>
+              <div [ngClass]="{'has-error': (form.controls.txid.errors && form.controls.txid.dirty), 'has-success': !form.controls.txid.errors}">
+                <input type="text" class="form-control" name="txid" autocomplete="off" placeholder="* Trx ID" formControlName="txid">
+                <ul class="help-block">
+                  <li *ngIf="form.controls.txid.errors?.required && form.controls.txid.dirty">This field is required</li>
+                  <li *ngIf="form.controls.txid.errors?.minlength && form.controls.txid.dirty">Min Character: 10</li>
+                </ul>
+              </div>
+            </div>
+            <div class="form-group" *ngIf="checks" style="margin-left:40%;">
+                <input  [disabled]="!form.valid" type="submit" class="btn btn-primary" style="width:40%;"  value="Submit"/>
+            </div>
+          </form>
+          <br>
+        </div>
+        <div class="panel-footer">
+          <strong>Tips:</strong>
+          <ul>
+            <li>When your sender sent the asstes  <font style="color:red;"> Give us Transection ID so we can verify and transfer Assets to your</font> account.</li>
+            <li>Coins will be deposited immediately after 30 network confirmation.</li>
+            <li>The address is not allowed to deposit other assets other than <font style="color:red;"> {{coin}}</font>, and any other asset deposit will not be recovered</li>
+          </ul>
+      </div>
+    </div>
+  </div>
+</div>

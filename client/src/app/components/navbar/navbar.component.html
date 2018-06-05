@@ -1,0 +1,41 @@
+<div style="height:51px;">
+  <nav class="navbar navbar-fixed-top navbar-custom">
+    <div class="device-width">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+           <span class="sr-only">Toggle navigation</span>
+           <span class="icon-bar"></span>
+           <span class="icon-bar"></span>
+           <span class="icon-bar"></span>
+         </button>
+        <a class="navbar-brand" routerLink="/"><img src="../../../assets/pic/logo2.png" alt="placeholder image"></a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-left">
+          <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a routerLink="/exchange">Exchange</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <!-- <li><a  routerLink="/dashboard">&nbsp; &nbsp;Dashboard&nbsp; &nbsp;</a></li> -->
+          <li><a routerLink="/profile">&nbsp; &nbsp;Profile&nbsp; &nbsp;</a></li>
+          <li><a  routerLink="/overview">&nbsp; &nbsp;Funds&nbsp; &nbsp;</a></li>
+          <li><a routerLink="/tradehistory">&nbsp; &nbsp;Orders&nbsp; &nbsp;</a></li>
+          <li><a (click)="onLogoutClick()">&nbsp; &nbsp;Logout&nbsp; &nbsp;</a></li>
+          <!-- <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a routerLink="/register"><span class="glyphicon glyphicon-user"></span> &nbsp; Register</a></li> -->
+          <!-- <li><a routerLink="/login"><span class="glyphicon glyphicon-log-in"></span>&nbsp; &nbsp;Login&nbsp; &nbsp;</a></li> -->
+          <!-- <li>
+            <div class="dropdown" style="position:relative;top:8px;">
+              <button class="btn btn-secondary dropdown-toggle glyphicon glyphicon-user" style=" background:#073796;" type="button" data-toggle="dropdown">
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" id="drop">
+                <li><a routerLink="/profile">Profile</a></li>
+                <li ><a (click)="onLogoutClick()">Logout</a></li>
+              </ul>
+               &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            </div>
+          </li> -->
+        </ul>
+      </div>
+    </div>
+  </nav>
+</div>

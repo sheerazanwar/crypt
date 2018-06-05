@@ -1,0 +1,53 @@
+
+#back
+{
+  background-image: url("../../../assets/pic/bgg.jpg");
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  height: 750px;
+  background-size: cover;
+}
+
+.asd{
+  position:relative;
+  left:32%;
+  width: 60%;
+}
+#box
+{
+  position:absolute;
+  top:5%;
+  left:30%;
+  width:40%;
+  background:rgba(141, 159, 170,.4);
+  color:#160b60;
+  padding:30px;
+}
+
+input[type=submit]
+{
+  position:relative;
+  left:20%;
+  width: 60%;
+  background-color: #4F6DB1;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+h2
+{
+  font-size: 40px;
+  text-align:center;
+}
+input[type=submit]:hover
+{
+  background-color: #2E57B5;
+}
+
+input[type=text],
+input[type=password]
+{
+  position:relative;
+  left:1%;
+  width:90%;
+}

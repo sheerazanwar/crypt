@@ -1,0 +1,29 @@
+h3
+{
+  font-style: bold;
+  text-align: center;
+}
+
+#coin
+{
+  background:#4d5b7a;
+  color:white;
+  height:30px;
+}
+
+#coin:hover
+{
+  background:white;
+  color:black;
+  height:32px;
+}
+#head
+{
+  font-size: 19px;
+}
+.table
+{
+  background: #415a91;
+  color:white;
+  font-weight: bold;
+}
