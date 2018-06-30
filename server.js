@@ -14,7 +14,7 @@ const multer = require('multer');
 const fs = require('fs');
 const ejs = require('ejs');
 const path = require('path');
-var port = process.env.PORT || 3000;
+var port = process.env.PORT || 3001;
 const cookieParser = require('cookie-parser');
 var history = require('./models/history.js');
 var limitOrder = require('./models/limitOrder.js');
@@ -115,11 +115,11 @@ binance.options(
 
       socket.on('candlestick',function(coin)
       {
-        console.log("candlestick called");
-        if(coin!=thisCoin){
+        if(coin!=coinname)
+        {
           respData=[];
           thisCoin = coin;
-          request('https://min-api.cryptocompare.com/data/histohour?fsym='+coin+'&tsym=USD&limit=10000&aggregate=3&e=CCCAGG', function (error, response, body) {
+          request('https://min-api.cryptocompare.com/data/histohour?fsym='+coin+'&tsym=USD&limit=60&aggregate=3&e=CCCAGG', function (error, response, body) {
             var xD = JSON.parse(body);
             var xData = xD.Data;
             xData.forEach(function(x,idx,i){
@@ -128,15 +128,21 @@ binance.options(
                 coin = coin+"BTC";
                 binance.websockets.candlesticks([coin], "1m", (candlesticks) =>
                 {
-                  let { e:eventType, E:eventTime, s:symbol, k:ticks } = candlesticks;
-                  let { o:open, h:high, l:low, c:close, v:volume, n:trades, i:interval, x:isFinal, q:quoteVolume, V:buyVolume, Q:quoteBuyVolume } = ticks;
-                  respData[respData.length] = [eventTime,parseFloat(high),parseFloat(low),parseFloat(open),parseFloat(close)];
-                  io.sockets.emit("candlestick",respData);
+                  if(coin==coinname)
+                  {
+                    let { e:eventType, E:eventTime, s:symbol, k:ticks } = candlesticks;
+                    let { o:open, h:high, l:low, c:close, v:volume, n:trades, i:interval, x:isFinal, q:quoteVolume, V:buyVolume, Q:quoteBuyVolume } = ticks;
+                    respData[respData.length] = [eventTime,parseFloat(high),parseFloat(low),parseFloat(open),parseFloat(close)];
+                    io.sockets.emit("candlestick",respData);
+                  }
                 });
               }
             });
           })
-        }else{
+        }
+        else
+        {
+          console.log("Else "+coin);
           coin = coin+"BTC";
           binance.websockets.candlesticks([coin], "1m", (candlesticks) =>
           {

@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
 var AccountSchema = new mongoose.Schema({
-  user_id:{type:mongoose.Schema.Types.ObjectId},
+  user_id:{type:mongoose.Schema.Types.ObjectId,ref:'User'},
   accountNumber:{type:String},
   bankName:{type:String}
 });

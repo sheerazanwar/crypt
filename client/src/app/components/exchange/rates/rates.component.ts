@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../../services/auth.service';
 import { ChatService } from '../../../services/chat.service';
 import { ExchangeComponent } from '../exchange.component';
-// import { ExchangeComponent } from '../graph/graph.component';
+import { GraphComponent } from '../graph/graph.component';
 
 @Component(
 {
@@ -15,14 +15,14 @@ export class RatesComponent implements OnInit
   rates:any;
   alpha;
   bitcoin:any;
-  constructor(private exchange:ExchangeComponent, private chatService: ChatService, private authService: AuthService) { }
+  constructor(private exchange:ExchangeComponent, private chatService: ChatService, private authService: AuthService, private graphComponent: GraphComponent) { }
 
   coin(crypto)
   {
-    // console.log(crypto);
     this.exchange.prices(crypto);
     this.exchange.markets(crypto);
     this.exchange.ticker(crypto);
+    this.graphComponent.candlestick(crypto);
   }
 
   ngOnInit()
@@ -31,13 +31,6 @@ export class RatesComponent implements OnInit
     {
       this.alpha=data;
       this.rates=this.alpha.tickers;
-      // console.log(this.rates);
     });
-
-    // this.authService.getprice().subscribe(data =>
-    // {
-    //   console.log(data.bpi.USD.rate);
-    //   this.bitcoin=data.bpi.USD.rate;
-    // });
   }
 }

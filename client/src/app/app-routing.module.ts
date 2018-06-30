@@ -11,10 +11,16 @@ import { ExchangeComponent } from './components/exchange/exchange.component';
 import { GraphComponent } from './components/exchange/graph/graph.component';
 import { OverviewComponent } from './components/funds/overview/overview.component';
 import { DepositComponent } from './components/funds/deposit/deposit.component';
+import { PieChartComponent } from './components/ui/pie-chart/pie-chart.component';
+import { SlidebarComponent } from './components/slidebar/slidebar.component';
 import { WithdrawalComponent } from './components/funds/withdrawal/withdrawal.component';
 import { OpenordersComponent } from './components/funds/openorders/openorders.component';
 import { TradehistoryComponent } from './components/funds/tradehistory/tradehistory.component';
 import { LoadingSpinnerComponent } from './components/ui/loading-spinner/loading-spinner.component';
+import { UserDetailsComponent } from './components/dashboard/user-details/user-details.component';
+import { TotalAssetsComponent } from './components/dashboard/total-assets/total-assets.component';
+import { TradeHistoryComponent } from './components/dashboard/trade-history/trade-history.component';
+import { CoinsComponent } from './components/dashboard/user-details/coins/coins.component';
 
 const appRoutes: Routes =
 [
@@ -29,6 +35,12 @@ const appRoutes: Routes =
   { path: 'withdrawal', component: WithdrawalComponent, canActivate:[AuthGuard] },
   { path: 'openorders', component: OpenordersComponent, canActivate:[AuthGuard] },
   { path: 'tradehistory', component: TradehistoryComponent, canActivate:[AuthGuard] },
+  { path: 'coins/:id', component: CoinsComponent, canActivate:[AuthGuard] },
+  { path: 'slidebar', component: SlidebarComponent, canActivate:[AuthGuard] },
+  { path: 'piechart', component: PieChartComponent, canActivate:[AuthGuard] },
+  { path: 'user-details', component: UserDetailsComponent, canActivate:[AuthGuard] },
+  { path: 'total-assets', component: TotalAssetsComponent, canActivate:[AuthGuard] },
+  { path: 'trade-history', component: TradeHistoryComponent, canActivate:[AuthGuard] },
   { path: 'register', component: RegisterComponent},
   { path: 'login', component: LoginComponent},
   { path: 'profile', component: ProfileComponent, canActivate:[AuthGuard] },

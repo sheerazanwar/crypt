@@ -65,7 +65,7 @@ this.createForm();
       } else {
         this.messageClass = 'alert alert-success'; // Set bootstrap success class
         this.message = data.message;
-        this.authService.storeUserData(data.token, data.user, data.id);
+        this.authService.storeUserData(data.token, data.user, data.id, data.isAdmin);
         // After 2 seconds, redirect to dashboard page
         setTimeout(() => {
           if(this.previousUrl)

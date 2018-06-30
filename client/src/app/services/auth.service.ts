@@ -28,11 +28,6 @@ export class AuthService
     this.authToken = localStorage.getItem('token');
   }
 
-  // getprice()
-  // {
-  //   return this.http.get('https://api.coindesk.com/v1/bpi/currentprice/btc.json', this.options).map(res => res.json());
-  // }
-
   getprice()
   {
     return this.http.get('https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,ADA,ADX,AE,AION,AMB,APPC,ARK,ARN,ERC20,AST,BAT,BCC,BCD,BCPT,BLZ,BNB,BNT,BQX,ETH,XRP,XLM,IOT&tsyms=BTC,USD,EUR').map(result => this.result = result.json());
@@ -65,10 +60,11 @@ export class AuthService
     localStorage.clear();
   }
 
-  storeUserData(token, user, id)
+  storeUserData(token, user, id, isAdmin)
   {
     localStorage.setItem('id', id);
     localStorage.setItem('token', token);
+    localStorage.setItem('isAdmin', isAdmin);
     localStorage.setItem('user', JSON.stringify(user));
     this.authToken = token;
     this.user = user;
@@ -131,5 +127,35 @@ export class AuthService
   {
     this.createAuthenticationHeaders();
     return this.http.get(this.domain + '/api/getEstimatedValue/'+id, this.options).map(res => res.json());
+  }
+
+  tradeHistory()
+  {
+    this.createAuthenticationHeaders();
+    return this.http.get(this.domain + '/api/getHistory', this.options).map(res => res.json());
+  }
+
+  userData()
+  {
+    this.createAuthenticationHeaders();
+    return this.http.get(this.domain + '/api/userData', this.options).map(res => res.json());
+  }
+
+  userCount()
+  {
+    this.createAuthenticationHeaders();
+    return this.http.get(this.domain + '/api/getAllUsers', this.options).map(res => res.json());
+  }
+
+  totalBalance()
+  {
+    this.createAuthenticationHeaders();
+    return this.http.get(this.domain + '/api/currentBalanceList', this.options).map(res => res.json());
+  }
+
+  checkCoins(id)
+  {
+    this.createAuthenticationHeaders();
+    return this.http.get(this.domain + '/api/userCoins/'+id, this.options).map(res => res.json());
   }
 }

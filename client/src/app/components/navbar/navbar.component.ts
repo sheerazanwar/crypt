@@ -8,21 +8,25 @@ import { FlashMessagesService } from 'angular2-flash-messages';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent implements OnInit
+{
+  admin=localStorage.getItem('isAdmin');
+  show:boolean = false;
 
-  constructor(
-    public authService: AuthService,
-    private router: Router,
-    private flashMessagesService: FlashMessagesService
-  ) { }
+  constructor(public authService: AuthService, private router: Router, private flashMessagesService: FlashMessagesService) {}
 
   onLogoutClick()
   {
     this.authService.logout();
-    // this.flashMessagesService.show('You are logged out', { cssClass: 'alert-info' }); // Set custom flash message
     this.router.navigate(['/']);
   }
 
-  ngOnInit() {}
+  ngOnInit()
+  {
+    if(this.admin=="true")
+    {
+      this.show=true;
+    }
+  }
 
 }

@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
 var CoinSchema = new mongoose.Schema({
-  user_id:{type:mongoose.Schema.Types.ObjectId},
+  user_id:{type:mongoose.Schema.Types.ObjectId,ref:'User'},
   coinName:{type:Array},
   amount:{type:Array}
 });

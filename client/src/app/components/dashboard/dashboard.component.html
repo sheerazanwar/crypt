@@ -1,5 +1,59 @@
-
 <app-navbar></app-navbar>
-  <h1 class="page-header">
-    Dashboard
-  </h1>
+<app-slidebar></app-slidebar>
+
+<div class="container" id="back" style="position:absolute;left:15.4%;width:84.5%;color:white;">
+
+  <div style="position:absolute;margin-top: 5%;left:15%; width:15%; background:rgba(225, 225, 225,.2); color:white; height:100px; padding-top:20px; padding-left:50px; padding-right:50px">
+    <table style="width:80%;margin-left:14%;">
+      <tr>
+        <td>
+          <font style="color:white;font-size:15px;text-align:center;font-style:bold;">Users</font>
+        </td>
+      </tr>
+      <tr cellspacing="10">
+        <td>
+          <font style="color:white;font-size:36px;text-align:center;">{{users}}</font>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div style="position:absolute;margin-top: 5%;left:42%; width:15%; background:rgba(225, 225, 225,.2); color:white; height:100px; padding-top:20px; padding-left:10px; padding-right:50px">
+    <table style="width:80%;">
+      <tr>
+        <td>
+          <font style="color:white;font-size:15px;text-align:center;font-style:bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BTC</font>
+        </td>
+      </tr>
+      <tr cellspacing="10">
+        <td>
+          <font style="color:white;font-size:30px;text-align:center;">{{btc}}</font>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div style="position:absolute;margin-top: 5%;left:69%; width:15%; background:rgba(225, 225, 225,.2); color:white; height:100px; padding-top:20px; padding-left:10px; padding-right:20px">
+    <table style="width:80%;">
+      <tr>
+        <td>
+          <font style="color:white;font-size:15px;text-align:center;font-style:bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XRP</font>
+        </td>
+      </tr>
+      <tr cellspacing="10">
+        <td>
+          <font style="color:white;font-size:28px;text-align:center;">{{xrp}}</font>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div id="box">
+    <br>
+    <app-pie-chart></app-pie-chart>
+  </div>
+  <!-- TradingView Widget BEGIN -->
+<!-- <div class="tradingview-widget-container">
+<div id="tradingview_aab19"></div>
+<div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/symbols/NASDAQ-AAPL/" rel="noopener" target="_blank"><span class="blue-text">AAPL chart</span></a> by TradingView</div>
+
+</div> -->
+<!-- TradingView Widget END -->
+</div>

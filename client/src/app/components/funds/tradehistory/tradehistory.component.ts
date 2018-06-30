@@ -17,6 +17,8 @@ export class TradehistoryComponent implements OnInit
   i=0;
   x=0;
   y=0;
+  cal;
+  bitcoin;
   filled=[];
   unfilled=[];
   ids = localStorage.getItem('id');
@@ -41,10 +43,19 @@ export class TradehistoryComponent implements OnInit
 
     ngOnInit()
     {
-      this.authService.balance(this.ids).subscribe(data=>
-      {
-        this.btc=data.btcValue;
-      });
+
+    this.authService.getprice().subscribe(data =>
+    {
+      this.bitcoin=data.BTC.USD;
+      console.log(this.bitcoin);
+    });
+
+    this.authService.balance(this.ids).subscribe(data=>
+    {
+      this.btc=data.btcValue;
+      this.cal=this.btc-this.open;
+      console.log(this.btc);
+    });
 
       this.chatService.getTrade().subscribe(data =>
       {

@@ -6,6 +6,7 @@ const bcrypt = require('bcrypt-nodejs');
 const hashedPassword = require('password-hash');
 const passport = require('passport');
 const cookieParser = require('cookie-parser');
+var groupBy = require('json-groupby');
 const binance = require('node-binance-api');
 var coins = require('../models/coin.js');
 
@@ -251,7 +252,7 @@ exports.authenticate = function (req, res)
                 if(error){
                   res.status(500).send({error:error});
                 }else{
-              res.status('200').send({ success: true, token: 'JWT ' + token, user: found, id: found._id, message: 'Login Sucessfuly !!',coin:coinResult});
+              res.status('200').send({ success: true, token: 'JWT ' + token, user: found, id: found._id, message: 'Login Sucessfuly !!',coin:coinResult, isAdmin:found.isAdmin});
                 }
               })
             })
@@ -302,6 +303,75 @@ exports.getAllUserList = function(req,res){
       res.status(500).send({error:error});
     }else{
       res.status(200).send({result:result});
+    }
+  })
+}
+
+exports.userData = function(req,res)
+{
+  var data=[];
+  User.find({}).exec(function(error,result)
+  {
+    if(error)
+    {
+      res.status(500).send({error:error});
+    }
+    else
+    {
+      res.status(200).send({result:result});
+    }
+  })
+}
+exports.userCoins = function(req,res)
+{
+  User.find({_id:req.params.id}).exec(function(error,result)
+  {
+    if(error)
+    {
+      res.status(500).send({error:error});
+    }
+    else
+    {
+      coins.find({user_id:req.params.id}).populate("user_id").exec(function(error,assets)
+      {
+        if(error)
+        {
+          res.status(500).send({error:error});
+        }
+        else
+        {
+          var coins=[]
+          if(assets.length>0)
+          {
+            for(var j=0; j<assets.length; j++)
+            {
+              coins[j]={ name: assets[j].user_id.username, coinName: assets[j].coinName, ammount: assets[j].amount};
+            }
+          }
+          console.log(coins);
+          res.status(200).send({coins:coins, user:result});
+        }
+      })
+    }
+  })
+}
+
+exports.getAllUsers = function(req,res)
+{
+  User.find({}).exec(function(error,result)
+  {
+    if(error)
+    {
+      res.status(500).send({error:error});
+    }
+    else
+    {
+      var i;
+      for(i=0;i<=result.length;i++)
+      {
+        // console.log(i);
+      }
+      res.status(200).send({result:i});
     }
   })
 }

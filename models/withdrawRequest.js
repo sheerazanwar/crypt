@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
 var WithdrawRequestSchema = new mongoose.Schema({
-  user_id:{type:mongoose.Schema.Types.ObjectId},
+  user_id:{type:mongoose.Schema.Types.ObjectId,ref:'User'},
   coinName:{type:String},
   address:{type:String},
   amount:{type:Number},

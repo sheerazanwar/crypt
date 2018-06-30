@@ -24,6 +24,8 @@ export class OverviewComponent implements OnInit
   open=0;
   x=0;
   y=0;
+  cal;
+  bitcoin;
   filled=[];
   unfilled=[];
   ids = localStorage.getItem('id');
@@ -94,7 +96,14 @@ export class OverviewComponent implements OnInit
     {
       this.btc=data.btcValue;
       this.assests=data.coins;
+      this.cal=this.btc-this.open;
       this.showSpinner=false;
+    });
+
+    this.authService.getprice().subscribe(data =>
+    {
+      this.bitcoin=data.BTC.USD;
+      console.log(this.bitcoin);
     });
 
     this.sub = Observable.interval(15000).subscribe((val) =>

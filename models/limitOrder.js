@@ -13,7 +13,7 @@
 var mongoose = require('mongoose');
 
 var LimitOrderSchema = new mongoose.Schema({
-  user_id:{type:mongoose.Schema.Types.ObjectId},
+  user_id:{type:mongoose.Schema.Types.ObjectId,ref:'User'},
   symbol: {type:String},
   orderId: {type:String},
   clientOrderId: {type:String},

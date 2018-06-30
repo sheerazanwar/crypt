@@ -17,6 +17,8 @@ export class OpenordersComponent implements OnInit
   btc=0;
   coin;
   i=0;
+  cal;
+  bitcoin;
   open=0;
   x=0;
   y=0;
@@ -84,9 +86,17 @@ export class OpenordersComponent implements OnInit
       this.showSpinner=false;
     });
 
+    this.authService.getprice().subscribe(data =>
+    {
+      this.bitcoin=data.BTC.USD;
+      console.log(this.bitcoin);
+    });
+
     this.authService.balance(this.idx).subscribe(data=>
     {
       this.btc=data.btcValue;
+      this.cal=this.btc-this.open;
+      console.log(this.btc);
     });
 
     this.sub = Observable.interval(15000).subscribe((val) =>

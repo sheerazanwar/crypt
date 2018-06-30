@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { DashboardComponent } from '../dashboard/dashboard.component';
 import { ChatService } from '../../services/chat.service';
 import { AuthService } from '../../services/auth.service';
 import { FlashMessagesService } from 'angular2-flash-messages';
@@ -55,7 +56,7 @@ export class ExchangeComponent implements OnInit
   unfilled=[];
   ids = localStorage.getItem('id');
 
-  constructor(private formBuilder: FormBuilder, private _flashMessagesService: FlashMessagesService, private chatService: ChatService, private authService: AuthService)
+    constructor(private dashboardComponent: DashboardComponent, private formBuilder: FormBuilder, private _flashMessagesService: FlashMessagesService, private chatService: ChatService, private authService: AuthService)
   {
     this.createForm();
   }
@@ -285,6 +286,8 @@ export class ExchangeComponent implements OnInit
       // console.log("Filled : ",this.filled);
       // console.log("UnFilled : ",this.unfilled);
     });
+
+    this.dashboardComponent.localStorage();
 
     this.sub = Observable.interval(5000).subscribe((val) =>
     {

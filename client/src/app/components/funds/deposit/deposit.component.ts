@@ -278,13 +278,6 @@ export class DepositComponent implements OnInit
       }
     });
 
-    // this.authService.getprice().subscribe(data =>
-    // {
-    //   this.bitcoin=data.bpi.USD.rate;
-    //   // this.bitcoin=parseFloat(this.bitcoin);
-    //   console.log(this.bitcoin);
-    // });
-
     this.authService.getprice().subscribe(data =>
     {
       this.bitcoin=data.BTC.USD;
