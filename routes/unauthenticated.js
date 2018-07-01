@@ -17,7 +17,7 @@ router.get('/currentBalanceList',crypto.currentBalanceList);
 router.get('/bidAskPriceAll',crypto.bidAskPriceAll);
 router.post('/singleMarketDepth',crypto.singleMarketDepth);
 router.post('/candleStickCall',crypto.candleStickCall);
-router.get('/getAllCoinsofUsers',crypto.getAllCoinsofUsers);
+
 router.get('/exchangeInfo',crypto.exchangeInfo);  //get minimum and maximum values for limit orders and tradings
 // router.get('/getAllDepositHistory',crypto.getAllDepositHistory);
 // router.post('/tradeHistory',crypto.tradeHistory);

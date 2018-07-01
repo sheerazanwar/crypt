@@ -6,7 +6,6 @@ const bcrypt = require('bcrypt-nodejs');
 const hashedPassword = require('password-hash');
 const passport = require('passport');
 const cookieParser = require('cookie-parser');
-var groupBy = require('json-groupby');
 const binance = require('node-binance-api');
 var coins = require('../models/coin.js');
 

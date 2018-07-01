@@ -35,11 +35,9 @@ router.get('/getPersonalCoinsDetails',crypto.getPersonalCoinsDetails);
 
 //new created Admin calls
 router.get('/userData',user.userData);
-router.get('/userCoins/:id',user.userCoins);
+router.get('/userCoins/:id',user.userCoins);  
 router.get('/getAllUsers',user.getAllUsers);
 router.get('/currentBalanceList',crypto.currentBalanceList);
 router.get('/getAllLimitOrders',crypto.getAllLimitOrders);
 router.get('/getHistory',crypto.getHistory);
-
-
 module.exports = router;
