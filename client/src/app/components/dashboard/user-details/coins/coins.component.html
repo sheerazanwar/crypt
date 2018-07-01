@@ -1,0 +1,54 @@
+<app-navbar></app-navbar>
+<div class="fluid-container col-sm-12" style="background:#e8e5e5;height:620px;">
+  <div class="col-sm-offset-2 col-sm-8" style="margin-top:40px;">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title">User Coins</h3>
+      </div>
+      <div class="panel-body">
+        <table>
+          <tr class="list-group-item">
+            <td style="width:200px;">
+              <font style="font-size:18px; font-style:bold;">Name </font>
+            </td>
+            <td  style="width:630px;">
+              <font style="font-size:17px">{{user[0].username}}</font>
+            </td>
+          </tr>
+          <tr class="list-group-item">
+            <td style="width:200px;">
+              <font style="font-size:18px; font-style:bold;">Email </font>
+            </td>
+            <td style="width:630px;">
+              <font style="font-size:17px">{{user[0].email}}</font>
+            </td>
+          </tr>
+          <tr class="list-group-item">
+            <td style="width:200px;">
+              <font style="font-size:18px; font-style:bold;">Phone# </font>
+            </td>
+            <td style="width:630px;">
+              <font style="font-size:17px">{{user[0].mobile}}</font>
+            </td>
+          </tr>
+          <tr class="list-group-item">
+            <td style="width:200px;">
+              <font style="font-size:18px; font-style:bold;">Country </font>
+            </td>
+            <td style="width:630px;">
+              <font style="font-size:17px">{{user[0].country}}</font>
+            </td>
+          </tr>
+          <tr class="list-group-item" *ngFor="let coin of coins">
+            <td style="width:200px;">
+              <font style="font-size:18px; font-style:bold;">{{coin.coinName}} </font>
+            </td>
+            <td style="width:630px;">
+              <font style="font-size:17px">{{coin.ammount}}</font>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

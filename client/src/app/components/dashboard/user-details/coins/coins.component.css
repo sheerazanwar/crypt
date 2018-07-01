@@ -1,0 +1,22 @@
+#back
+{
+  background-image: url("../../../../../assets/pic/bgg.jpg");
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 900px;
+  background-size: cover;
+}
+
+#box
+{
+  position:relative;
+  margin-top: 5%;
+  left:17%;
+  width:60%;
+  background:rgba(76, 79, 89,.3);
+  color:white;
+  padding-top:20px;
+  padding-left:50px;
+  padding-right:50px;
+}

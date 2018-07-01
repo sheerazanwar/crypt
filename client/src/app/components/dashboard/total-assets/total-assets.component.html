@@ -1,0 +1,608 @@
+<app-navbar></app-navbar>
+<app-slidebar></app-slidebar>
+
+<div class="container" id="back" style="position:absolute;left:15.4%;width:84.5%;color:white;">
+  <div id="box1" >
+      <h2 class="page-header">Total Assets</h2>
+      <br><br>
+      <app-loading-spinner *ngIf="showSpinner" style="position:absolute;left:45%;"></app-loading-spinner>
+      <table cellspacing=25px style="position:relative;left:5%;width:90%;">
+        <tr *ngIf="!showSpinner">
+          <th>
+            <font size=4>Coin</font>
+          </th>
+          <th>
+            <font size=4>Available</font>
+          </th>
+          <th>
+            <font size=4>onOrder</font>
+          </th>
+        </tr>
+        <br/>
+        <tr *ngIf="!showSpinner">
+          <td>
+            <font>BTC</font>
+          </td>
+          <td>
+            <font>{{total.BTC.available}}</font>
+          </td>
+          <td>
+            <font>{{total.BTC.onOrder}}</font>
+          </td>
+          <td>
+            <a [routerLink]="['/deposit']"><button type="button" name="button" class="btn btn-primary">Deposit</button></a>
+          </td>
+          <td>
+            <a [routerLink]="['/withdrawal']"><button type="button" name="button" class="btn btn-info">Withdraw</button></a>
+          </td>
+          <td>
+            <a [routerLink]="['/exchange']"><button type="button" class="btn btn-warning">Trade</button></a>
+          </td>
+        </tr>
+        <tr *ngIf="!showSpinner">
+          <td>
+            <font>XRP</font>
+          </td>
+          <td>
+            <font>{{total.XRP.available}}</font>
+          </td>
+          <td>
+            <font>{{total.XRP.onOrder}}</font>
+          </td>
+          <td>
+            <a [routerLink]="['/deposit']"><button type="button" name="button" class="btn btn-primary">Deposit</button></a>
+          </td>
+          <td>
+            <a [routerLink]="['/withdrawal']"><button type="button" name="button" class="btn btn-info">Withdraw</button></a>
+          </td>
+          <td>
+            <a [routerLink]="['/exchange']"><button type="button" class="btn btn-warning">Trade</button></a>
+          </td>
+        </tr>
+        <tr *ngIf="!showSpinner">
+          <td>
+            <font>LTC</font>
+          </td>
+          <td>
+            <font>{{total.LTC.available}}</font>
+          </td>
+          <td>
+            <font>{{total.LTC.onOrder}}</font>
+          </td>
+          <td>
+            <a [routerLink]="['/deposit']"><button type="button" name="button" class="btn btn-primary">Deposit</button></a>
+          </td>
+          <td>
+            <a [routerLink]="['/withdrawal']"><button type="button" name="button" class="btn btn-info">Withdraw</button></a>
+          </td>
+          <td>
+            <a [routerLink]="['/exchange']"><button type="button" class="btn btn-warning">Trade</button></a>
+          </td>
+        </tr>
+        <tr *ngIf="!showSpinner">
+          <td>
+            <font>ADA</font>
+          </td>
+          <td>
+            <font>{{total.ADA.available}}</font>
+          </td>
+          <td>
+            <font>{{total.ADA.onOrder}}</font>
+          </td>
+          <td>
+            <a [routerLink]="['/deposit']"><button type="button" name="button" class="btn btn-primary">Deposit</button></a>
+          </td>
+          <td>
+            <a [routerLink]="['/withdrawal']"><button type="button" name="button" class="btn btn-info">Withdraw</button></a>
+          </td>
+          <td>
+            <a [routerLink]="['/exchange']"><button type="button" class="btn btn-warning">Trade</button></a>
+          </td>
+        </tr>
+        <tr *ngIf="!showSpinner">
+          <td>
+            <font>ADX</font>
+          </td>
+          <td>
+            <font>{{total.ADX.available}}</font>
+          </td>
+          <td>
+            <font>{{total.ADX.onOrder}}</font>
+          </td>
+          <td>
+            <a [routerLink]="['/deposit']"><button type="button" name="button" class="btn btn-primary">Deposit</button></a>
+          </td>
+          <td>
+            <a [routerLink]="['/withdrawal']"><button type="button" name="button" class="btn btn-info">Withdraw</button></a>
+          </td>
+          <td>
+            <a [routerLink]="['/exchange']"><button type="button" class="btn btn-warning">Trade</button></a>
+          </td>
+        </tr>
+        <tr *ngIf="!showSpinner">
+          <td>
+            <font>AION</font>
+          </td>
+          <td>
+            <font>{{total.AION.available}}</font>
+          </td>
+          <td>
+            <font>{{total.AION.onOrder}}</font>
+          </td>
+          <td>
+            <a [routerLink]="['/deposit']"><button type="button" name="button" class="btn btn-primary">Deposit</button></a>
+          </td>
+          <td>
+            <a [routerLink]="['/withdrawal']"><button type="button" name="button" class="btn btn-info">Withdraw</button></a>
+          </td>
+          <td>
+            <a [routerLink]="['/exchange']"><button type="button" class="btn btn-warning">Trade</button></a>
+          </td>
+        </tr>
+        <tr *ngIf="!showSpinner">
+          <td>
+            <font>AE</font>
+          </td>
+          <td>
+            <font>{{total.AE.available}}</font>
+          </td>
+          <td>
+            <font>{{total.AE.onOrder}}</font>
+          </td>
+          <td>
+            <a [routerLink]="['/deposit']"><button type="button" name="button" class="btn btn-primary">Deposit</button></a>
+          </td>
+          <td>
+            <a [routerLink]="['/withdrawal']"><button type="button" name="button" class="btn btn-info">Withdraw</button></a>
+          </td>
+          <td>
+            <a [routerLink]="['/exchange']"><button type="button" class="btn btn-warning">Trade</button></a>
+          </td>
+        </tr>
+        <tr *ngIf="!showSpinner">
+          <td>
+            <font>BNB</font>
+          </td>
+          <td>
+            <font>{{total.BNB.available}}</font>
+          </td>
+          <td>
+            <font>{{total.BNB.onOrder}}</font>
+          </td>
+          <td>
+            <a [routerLink]="['/deposit']"><button type="button" name="button" class="btn btn-primary">Deposit</button></a>
+          </td>
+          <td>
+            <a [routerLink]="['/withdrawal']"><button type="button" name="button" class="btn btn-info">Withdraw</button></a>
+          </td>
+          <td>
+            <a [routerLink]="['/exchange']"><button type="button" class="btn btn-warning">Trade</button></a>
+          </td>
+        </tr>
+        <tr *ngIf="!showSpinner">
+          <td>
+            <font>BQX</font>
+          </td>
+          <td>
+            <font>{{total.BQX.available}}</font>
+          </td>
+          <td>
+            <font>{{total.BQX.onOrder}}</font>
+          </td>
+          <td>
+            <a [routerLink]="['/deposit']"><button type="button" name="button" class="btn btn-primary">Deposit</button></a>
+          </td>
+          <td>
+            <a [routerLink]="['/withdrawal']"><button type="button" name="button" class="btn btn-info">Withdraw</button></a>
+          </td>
+          <td>
+            <a [routerLink]="['/exchange']"><button type="button" class="btn btn-warning">Trade</button></a>
+          </td>
+        </tr>
+        <tr *ngIf="!showSpinner">
+          <td>
+            <font>BCC</font>
+          </td>
+          <td>
+            <font>{{total.BCC.available}}</font>
+          </td>
+          <td>
+            <font>{{total.BCC.onOrder}}</font>
+          </td>
+          <td>
+            <a [routerLink]="['/deposit']"><button type="button" name="button" class="btn btn-primary">Deposit</button></a>
+          </td>
+          <td>
+            <a [routerLink]="['/withdrawal']"><button type="button" name="button" class="btn btn-info">Withdraw</button></a>
+          </td>
+          <td>
+            <a [routerLink]="['/exchange']"><button type="button" class="btn btn-warning">Trade</button></a>
+          </td>
+        </tr>
+        <tr *ngIf="!showSpinner">
+          <td>
+            <font>ICN</font>
+          </td>
+          <td>
+            <font>{{total.ICN.available}}</font>
+          </td>
+          <td>
+            <font>{{total.ICN.onOrder}}</font>
+          </td>
+          <td>
+            <a [routerLink]="['/deposit']"><button type="button" name="button" class="btn btn-primary">Deposit</button></a>
+          </td>
+          <td>
+            <a [routerLink]="['/withdrawal']"><button type="button" name="button" class="btn btn-info">Withdraw</button></a>
+          </td>
+          <td>
+            <a [routerLink]="['/exchange']"><button type="button" class="btn btn-warning">Trade</button></a>
+          </td>
+        </tr>
+        <tr *ngIf="!showSpinner">
+          <td>
+            <font>NEO</font>
+          </td>
+          <td>
+            <font>{{total.NEO.available}}</font>
+          </td>
+          <td>
+            <font>{{total.NEO.onOrder}}</font>
+          </td>
+          <td>
+            <a [routerLink]="['/deposit']"><button type="button" name="button" class="btn btn-primary">Deposit</button></a>
+          </td>
+          <td>
+            <a [routerLink]="['/withdrawal']"><button type="button" name="button" class="btn btn-info">Withdraw</button></a>
+          </td>
+          <td>
+            <a [routerLink]="['/exchange']"><button type="button" class="btn btn-warning">Trade</button></a>
+          </td>
+        </tr>
+        <tr *ngIf="!showSpinner">
+          <td>
+            <font>LINK</font>
+          </td>
+          <td>
+            <font>{{total.LINK.available}}</font>
+          </td>
+          <td>
+            <font>{{total.LINK.onOrder}}</font>
+          </td>
+          <td>
+            <a [routerLink]="['/deposit']"><button type="button" name="button" class="btn btn-primary">Deposit</button></a>
+          </td>
+          <td>
+            <a [routerLink]="['/withdrawal']"><button type="button" name="button" class="btn btn-info">Withdraw</button></a>
+          </td>
+          <td>
+            <a [routerLink]="['/exchange']"><button type="button" class="btn btn-warning">Trade</button></a>
+          </td>
+        </tr>
+        <tr *ngIf="!showSpinner">
+          <td>
+            <font>SALT</font>
+          </td>
+          <td>
+            <font>{{total.SALT.available}}</font>
+          </td>
+          <td>
+            <font>{{total.SALT.onOrder}}</font>
+          </td>
+          <td>
+            <a [routerLink]="['/deposit']"><button type="button" name="button" class="btn btn-primary">Deposit</button></a>
+          </td>
+          <td>
+            <a [routerLink]="['/withdrawal']"><button type="button" name="button" class="btn btn-info">Withdraw</button></a>
+          </td>
+          <td>
+            <a [routerLink]="['/exchange']"><button type="button" class="btn btn-warning">Trade</button></a>
+          </td>
+        </tr>
+        <tr *ngIf="!showSpinner">
+          <td>
+            <font>IOTA</font>
+          </td>
+          <td>
+            <font>{{total.IOTA.available}}</font>
+          </td>
+          <td>
+            <font>{{total.IOTA.onOrder}}</font>
+          </td>
+          <td>
+            <a [routerLink]="['/deposit']"><button type="button" name="button" class="btn btn-primary">Deposit</button></a>
+          </td>
+          <td>
+            <a [routerLink]="['/withdrawal']"><button type="button" name="button" class="btn btn-info">Withdraw</button></a>
+          </td>
+          <td>
+            <a [routerLink]="['/exchange']"><button type="button" class="btn btn-warning">Trade</button></a>
+          </td>
+        </tr>
+        <tr *ngIf="!showSpinner">
+          <td>
+            <font>ETC</font>
+          </td>
+          <td>
+            <font>{{total.ETC.available}}</font>
+          </td>
+          <td>
+            <font>{{total.ETC.onOrder}}</font>
+          </td>
+          <td>
+            <a [routerLink]="['/deposit']"><button type="button" name="button" class="btn btn-primary">Deposit</button></a>
+          </td>
+          <td>
+            <a [routerLink]="['/withdrawal']"><button type="button" name="button" class="btn btn-info">Withdraw</button></a>
+          </td>
+          <td>
+            <a [routerLink]="['/exchange']"><button type="button" class="btn btn-warning">Trade</button></a>
+          </td>
+        </tr>
+        <tr *ngIf="!showSpinner">
+          <td>
+            <font>KNC</font>
+          </td>
+          <td>
+            <font>{{total.KNC.available}}</font>
+          </td>
+          <td>
+            <font>{{total.KNC.onOrder}}</font>
+          </td>
+          <td>
+            <a [routerLink]="['/deposit']"><button type="button" name="button" class="btn btn-primary">Deposit</button></a>
+          </td>
+          <td>
+            <a [routerLink]="['/withdrawal']"><button type="button" name="button" class="btn btn-info">Withdraw</button></a>
+          </td>
+          <td>
+            <a [routerLink]="['/exchange']"><button type="button" class="btn btn-warning">Trade</button></a>
+          </td>
+        </tr>
+        <tr *ngIf="!showSpinner">
+          <td>
+            <font>WTC</font>
+          </td>
+          <td>
+            <font>{{total.WTC.available}}</font>
+          </td>
+          <td>
+            <font>{{total.WTC.onOrder}}</font>
+          </td>
+          <td>
+            <a [routerLink]="['/deposit']"><button type="button" name="button" class="btn btn-primary">Deposit</button></a>
+          </td>
+          <td>
+            <a [routerLink]="['/withdrawal']"><button type="button" name="button" class="btn btn-info">Withdraw</button></a>
+          </td>
+          <td>
+            <a [routerLink]="['/exchange']"><button type="button" class="btn btn-warning">Trade</button></a>
+          </td>
+        </tr>
+        <tr *ngIf="!showSpinner">
+          <td>
+            <font>SNT</font>
+          </td>
+          <td>
+            <font>{{total.SNT.available}}</font>
+          </td>
+          <td>
+            <font>{{total.SNT.onOrder}}</font>
+          </td>
+          <td>
+            <a [routerLink]="['/deposit']"><button type="button" name="button" class="btn btn-primary">Deposit</button></a>
+          </td>
+          <td>
+            <a [routerLink]="['/withdrawal']"><button type="button" name="button" class="btn btn-info">Withdraw</button></a>
+          </td>
+          <td>
+            <a [routerLink]="['/exchange']"><button type="button" class="btn btn-warning">Trade</button></a>
+          </td>
+        </tr>
+        <tr *ngIf="!showSpinner">
+          <td>
+            <font>GAS</font>
+          </td>
+          <td>
+            <font>{{total.GAS.available}}</font>
+          </td>
+          <td>
+            <font>{{total.GAS.onOrder}}</font>
+          </td>
+          <td>
+            <a [routerLink]="['/deposit']"><button type="button" name="button" class="btn btn-primary">Deposit</button></a>
+          </td>
+          <td>
+            <a [routerLink]="['/withdrawal']"><button type="button" name="button" class="btn btn-info">Withdraw</button></a>
+          </td>
+          <td>
+            <a [routerLink]="['/exchange']"><button type="button" class="btn btn-warning">Trade</button></a>
+          </td>
+        </tr>
+        <tr *ngIf="!showSpinner">
+          <td>
+            <font>SNM</font>
+          </td>
+          <td>
+            <font>{{total.SNM.available}}</font>
+          </td>
+          <td>
+            <font>{{total.SNM.onOrder}}</font>
+          </td>
+          <td>
+            <a [routerLink]="['/deposit']"><button type="button" name="button" class="btn btn-primary">Deposit</button></a>
+          </td>
+          <td>
+            <a [routerLink]="['/withdrawal']"><button type="button" name="button" class="btn btn-info">Withdraw</button></a>
+          </td>
+          <td>
+            <a [routerLink]="['/exchange']"><button type="button" class="btn btn-warning">Trade</button></a>
+          </td>
+        </tr>
+        <tr *ngIf="!showSpinner">
+          <td>
+            <font>BQX</font>
+          </td>
+          <td>
+            <font>{{total.BQX.available}}</font>
+          </td>
+          <td>
+            <font>{{total.BQX.onOrder}}</font>
+          </td>
+          <td>
+            <a [routerLink]="['/deposit']"><button type="button" name="button" class="btn btn-primary">Deposit</button></a>
+          </td>
+          <td>
+            <a [routerLink]="['/withdrawal']"><button type="button" name="button" class="btn btn-info">Withdraw</button></a>
+          </td>
+          <td>
+            <a [routerLink]="['/exchange']"><button type="button" class="btn btn-warning">Trade</button></a>
+          </td>
+        </tr>
+        <tr *ngIf="!showSpinner">
+          <td>
+            <font>QTUM</font>
+          </td>
+          <td>
+            <font>{{total.QTUM.available}}</font>
+          </td>
+          <td>
+            <font>{{total.QTUM.onOrder}}</font>
+          </td>
+          <td>
+            <a [routerLink]="['/deposit']"><button type="button" name="button" class="btn btn-primary">Deposit</button></a>
+          </td>
+          <td>
+            <a [routerLink]="['/withdrawal']"><button type="button" name="button" class="btn btn-info">Withdraw</button></a>
+          </td>
+          <td>
+            <a [routerLink]="['/exchange']"><button type="button" class="btn btn-warning">Trade</button></a>
+          </td>
+        </tr>
+        <tr *ngIf="!showSpinner">
+          <td>
+            <font>LTC</font>
+          </td>
+          <td>
+            <font>{{total.LTC.available}}</font>
+          </td>
+          <td>
+            <font>{{total.LTC.onOrder}}</font>
+          </td>
+          <td>
+            <a [routerLink]="['/deposit']"><button type="button" name="button" class="btn btn-primary">Deposit</button></a>
+          </td>
+          <td>
+            <a [routerLink]="['/withdrawal']"><button type="button" name="button" class="btn btn-info">Withdraw</button></a>
+          </td>
+          <td>
+            <a [routerLink]="['/exchange']"><button type="button" class="btn btn-warning">Trade</button></a>
+          </td>
+        </tr>
+        <tr *ngIf="!showSpinner">
+          <td>
+            <font>ETH</font>
+          </td>
+          <td>
+            <font>{{total.ETH.available}}</font>
+          </td>
+          <td>
+            <font>{{total.ETH.onOrder}}</font>
+          </td>
+          <td>
+            <a [routerLink]="['/deposit']"><button type="button" name="button" class="btn btn-primary">Deposit</button></a>
+          </td>
+          <td>
+            <a [routerLink]="['/withdrawal']"><button type="button" name="button" class="btn btn-info">Withdraw</button></a>
+          </td>
+          <td>
+            <a [routerLink]="['/exchange']"><button type="button" class="btn btn-warning">Trade</button></a>
+          </td>
+        </tr>
+        <tr *ngIf="!showSpinner">
+          <td>
+            <font>STRAT</font>
+          </td>
+          <td>
+            <font>{{total.STRAT.available}}</font>
+          </td>
+          <td>
+            <font>{{total.STRAT.onOrder}}</font>
+          </td>
+          <td>
+            <a [routerLink]="['/deposit']"><button type="button" name="button" class="btn btn-primary">Deposit</button></a>
+          </td>
+          <td>
+            <a [routerLink]="['/withdrawal']"><button type="button" name="button" class="btn btn-info">Withdraw</button></a>
+          </td>
+          <td>
+            <a [routerLink]="['/exchange']"><button type="button" class="btn btn-warning">Trade</button></a>
+          </td>
+        </tr>
+        <tr *ngIf="!showSpinner">
+          <td>
+            <font>BCC</font>
+          </td>
+          <td>
+            <font>{{total.BCC.available}}</font>
+          </td>
+          <td>
+            <font>{{total.BCC.onOrder}}</font>
+          </td>
+          <td>
+            <a [routerLink]="['/deposit']"><button type="button" name="button" class="btn btn-primary">Deposit</button></a>
+          </td>
+          <td>
+            <a [routerLink]="['/withdrawal']"><button type="button" name="button" class="btn btn-info">Withdraw</button></a>
+          </td>
+          <td>
+            <a [routerLink]="['/exchange']"><button type="button" class="btn btn-warning">Trade</button></a>
+          </td>
+        </tr>
+        <tr *ngIf="!showSpinner">
+          <td>
+            <font>OMG</font>
+          </td>
+          <td>
+            <font>{{total.OMG.available}}</font>
+          </td>
+          <td>
+            <font>{{total.OMG.onOrder}}</font>
+          </td>
+          <td>
+            <a [routerLink]="['/deposit']"><button type="button" name="button" class="btn btn-primary">Deposit</button></a>
+          </td>
+          <td>
+            <a [routerLink]="['/withdrawal']"><button type="button" name="button" class="btn btn-info">Withdraw</button></a>
+          </td>
+          <td>
+            <a [routerLink]="['/exchange']"><button type="button" class="btn btn-warning">Trade</button></a>
+          </td>
+        </tr>
+        <tr *ngIf="!showSpinner">
+          <td>
+            <font>MCO</font>
+          </td>
+          <td>
+            <font>{{total.MCO.available}}</font>
+          </td>
+          <td>
+            <font>{{total.MCO.onOrder}}</font>
+          </td>
+          <td>
+            <a [routerLink]="['/deposit']"><button type="button" name="button" class="btn btn-primary">Deposit</button></a>
+          </td>
+          <td>
+            <a [routerLink]="['/withdrawal']"><button type="button" name="button" class="btn btn-info">Withdraw</button></a>
+          </td>
+          <td>
+            <a [routerLink]="['/exchange']"><button type="button" class="btn btn-warning">Trade</button></a>
+          </td>
+        </tr>
+      </table>
+      <br><br><br><br><br>
+    </div>
+    <br><br><br><br><br>
+    <br><br><br><br><br>
+    <br><br><br><br><br>
+</div>

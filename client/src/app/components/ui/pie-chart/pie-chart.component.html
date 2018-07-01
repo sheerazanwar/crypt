@@ -1,0 +1,23 @@
+
+<div class="col-sm-offset-10 col-sm-2 text-center">
+  <button class="btn btn-info" (click)="randomizeType()">Toggle</button>
+</div>
+<br>
+<div class="col-sm-offset-1 col-sm-10">
+  <canvas baseChart
+    [data]="pieChartData"
+    [labels]="pieChartLabels"
+    [chartType]="pieChartType"
+    (chartHover)="chartHovered($event)"
+    (chartClick)="chartClicked($event)">
+  </canvas>
+</div>
+<br><br><br>
+ <div class="col-sm-offset-1 col-sm-10">
+<canvas baseChart
+                [data]="lineChartData"
+                [labels]="lineChartLabels"
+                [chartType]="lineChartType"
+                (chartHover)="chartHovered($event)"
+                (chartClick)="chartClicked($event)"></canvas>
+  </div>

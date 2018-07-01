@@ -1,0 +1,51 @@
+<app-navbar></app-navbar>
+<app-slidebar></app-slidebar>
+
+<div class="container" id="back" style="position:absolute;left:15.4%;width:84.5%;color:white;">
+  <div id="box1" >
+      <h2 class="page-header">Trade History</h2>
+      <br><br>
+      <app-loading-spinner *ngIf="showSpinner" style="position:absolute;left:45%;"></app-loading-spinner>
+      <table cellspacing=25px style="position:relative;left:5%;width:90%;">
+        <tr>
+          <th>
+            <font size=4>User</font>
+          </th>
+          <th>
+            <font size=4>Coin</font>
+          </th>
+          <th>
+            <font size=4>Category</font>
+          </th>
+          <th>
+            <font size=4>Price</font>
+          </th>
+          <th>
+            <font size=4>Quantity</font>
+          </th>
+        </tr>
+        <br/>
+        <tr *ngFor="let hist of history">
+          <td>
+            <font>{{hist.user_id.name}}</font>
+          </td>
+          <td>
+            <font>{{hist.symbol}}</font>
+          </td>
+          <td>
+            <font>{{hist.side}}</font>
+          </td>
+          <td>
+            <font>{{hist.price}}</font>
+          </td>
+          <td>
+            <font>{{hist.origQty}}</font>
+          </td>
+        </tr>
+      </table>
+      <br><br><br><br><br>
+    </div>
+    <br><br><br><br><br>
+    <br><br><br><br><br>
+    <br><br><br>
+</div>

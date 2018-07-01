@@ -1,0 +1,54 @@
+<app-navbar></app-navbar>
+<app-slidebar></app-slidebar>
+
+<div class="container" id="back" style="position:absolute;left:15.4%;width:84.5%;color:white;">
+  <div id="box1" >
+      <h2 class="page-header">User Details</h2>
+      <br><br>
+      <app-loading-spinner *ngIf="showSpinner" style="position:absolute;left:45%;"></app-loading-spinner>
+      <table cellspacing=25px style="position:relative;left:5%;width:90%;">
+        <tr>
+          <th>
+            <font size=4>Name</font>
+          </th>
+          <th>
+            <font size=4>Username</font>
+          </th>
+          <th>
+            <font size=4>Email</font>
+          </th>
+          <th>
+            <font size=4>Mobile</font>
+          </th>
+          <th>
+            <font size=4>Country</font>
+          </th>
+        </tr>
+        <br/>
+        <tr *ngFor="let user of users">
+          <td>
+            <font>{{user.name}}</font>
+          </td>
+          <td>
+            <font>{{user.username}}</font>
+          </td>
+          <td>
+            <font>{{user.email}}</font>
+          </td>
+          <td>
+            <font>{{user.mobile}}</font>
+          </td>
+          <td>
+            <font>{{user.country}}</font>
+          </td>
+          <td>
+            <a [routerLink]="['/coins/', user._id]"><button type="button" name="button" class="btn btn-info">User Coins</button></a>
+          </td>
+        </tr>
+      </table>
+      <br><br><br><br><br>
+    </div>
+    <br><br><br><br><br>
+    <br><br><br><br><br>
+    <br><br><br>
+</div>
